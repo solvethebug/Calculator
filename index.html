@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background: linear-gradient(45deg, #0a0a0a, rgba(0, 0, 0, 0.267)); */
+  background-color: #0a0a0a;
+}
+.calculator {
+  border: 4px solid #a6a8ad;
+  padding: 20px;
+  border-radius: 25px;
+  background-color: transparent;
+  box-shadow: 0px 3px 15px rgba(199, 200, 202, 0.5);
+}
+.calulator {
+  border: 2px solid #727375;
+  margin-right: 8px;
+  padding: 8px;
+  border-radius: 10px;
+  box-shadow: rgba(175, 175, 179, 0.25) 0px 13px 27px -5px,
+    rgba(168, 165, 165, 0.3) 0px 8px 16px -8px;
+  /* box-shadow: rgba(165, 163, 163, 0.35) 0px 5px 15px; */
+}
+input {
+  width: 320px;
+  border-radius: 2px solid white;
+  padding: 24px;
+  margin: 10px;
+  background: transparent;
+  box-shadow: 0px 3px 15px rgbs(84, 84, 84, 0.1);
+  font-size: 40px;
+  text-align: right;
+  cursor: pointer;
+  color: #ffffff;
+}
+input::placeholder {
+  color: #ffffff;
+}
+
+button {
+  border: none;
+  width: 60px;
+  height: 60px;
+  margin: 10px;
+  border-radius: 50%;
+  background: transparent;
+  color: #ffffff;
+  font-size: 20px;
+  box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+.eqlbtn {
+  background-color: red;
+}
+.sign {
+  color: green;
+  font-weight: bold;
+}
+.op {
+  color: orange;
+  font-weight: bold;
+}
+#input::placeholde {
+  border-radius: 2px solid white;
+}
+</style>
+
+    <title>Calculator</title>
+  </head>
+  <body>
+    <div class="calulator">
+      <input type="text" placeholder="0" id="input" />
+
+      <div>
+        <button class="sign">AC</button>
+        <button class="sign">DEL</button>
+        <button class="op">%</button>
+        <button class="op">/</button>
+      </div>
+      <div class="elem">
+        <div>
+          <button onclick="a()">7</button>
+          <button onclick="b()">8</button>
+          <button onclick="c()">9</button>
+          <button class="op" onclick="d()">*</button>
+        </div>
+        <div>
+          <button onclick="e()">4</button>
+          <button onclick="f()">5</button>
+          <button onclick="g()">6</button>
+          <button class="op" onclick="h()">-</button>
+        </div>
+        <div>
+          <button onclick="i()">1</button>
+          <button onclick="j()">2</button>
+          <button onclick="k()">3</button>
+          <button class="op" onclick="l()">+</button>
+        </div>
+        <div>
+          <button>00</button>
+          <button>0</button>
+          <button>.</button>
+          <button class="eqlbtn">=</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+    let input = document.getElementById("input");
+let buttons = document.querySelectorAll("button");
+let string = "";
+let arr = Array.from(buttons);
+arr.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    if (e.target.innerHTML === "=") {
+      try {
+        string = eval(string);
+        input.value = string;
+      } catch (error) {
+        input.value = "Error";
+      }
+    } else if (e.target.innerHTML === "AC") {
+      string = ""; // Reset the string to an empty value
+      input.value = string;
+    } else if (e.target.innerHTML === "DEL") {
+      string = string.substring(0, string.length - 1);
+      input.value = string;
+    } else {
+      string += e.target.innerHTML;
+      input.value = string;
+    }
+  });
+});
+  function a() {
+    input.value = +"7";
+  }
+  function b() {
+    input.value = +"8";
+  }
+  function c() {
+    input.value = +"9";
+  }
+  function d() {
+    input.value = +"*";
+  }
+  function e() {
+    input.value = +"4";
+  }
+  function f() {
+    input.value = +"5";
+  }
+  function g() {
+    input.value = +"6";
+  }
+  function h() {
+    input.value = +"-";
+  }
+  function i() {
+    input.value = +"1";
+  }
+  function j() {
+    input.value = +"2";
+  }
+  function k() {
+    input.value = +"3";
+  }
+  function l() {
+    input.value = +"+";
+  }
+</script>
